@@ -3,127 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>免費 TOEIC 聽力學習中心</title>
+<title>TOEIC Listening Practice</title>
 
 <style>
 body{
-    font-family:Arial,"Noto Sans TC",sans-serif;
-    background:#f4f7fb;
-    margin:0;
+  margin:0;
+  font-family:Arial,"Noto Sans TC",sans-serif;
+  background:#0b1220;
+  color:#eaf0ff;
 }
+
 header{
-    background:#005BAC;
-    color:white;
-    text-align:center;
-    padding:40px;
+  padding:25px;
+  text-align:center;
+  background:#111a2e;
 }
+
 .container{
-    max-width:900px;
-    margin:auto;
-    padding:20px;
+  max-width:800px;
+  margin:auto;
+  padding:15px;
 }
+
 .card{
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    margin:20px 0;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
+  background:#111a2e;
+  padding:15px;
+  border-radius:12px;
+  margin:15px 0;
 }
-a{
-    color:#005BAC;
-    text-decoration:none;
+
+button{
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#4f8cff;
+  color:white;
+  margin-top:8px;
 }
-a:hover{
-    text-decoration:underline;
+
+.option{
+  display:block;
+  padding:10px;
+  margin:6px 0;
+  background:#1b2740;
+  border-radius:8px;
+  cursor:pointer;
 }
-ul{
-    line-height:2;
+
+.option:hover{
+  background:#24365c;
 }
-footer{
-    text-align:center;
-    color:#777;
-    padding:30px;
+
+.answer{
+  margin-top:10px;
+  padding:10px;
+  background:#1f3b2c;
+  border-left:4px solid #22c55e;
+  display:none;
 }
 </style>
-
 </head>
+
 <body>
 
 <header>
-<h1>🎧 免費 TOEIC 聽力學習中心</h1>
-<p>整理合法免費的 TOEIC 聽力教材與練習資源</p>
+<h1>🎧 TOEIC Listening Practice</h1>
+<p>Part 2 練習 + 解答解析</p>
 </header>
 
 <div class="container">
 
+<!-- 🎧 AUDIO -->
 <div class="card">
-<h2>📘 官方練習</h2>
-<ul>
-<li><a href="https://www.ets.org/toeic/test-takers/listening-reading/prepare/practice-tests.html" target="_blank">ETS 官方免費 Practice Test</a></li>
-<li><a href="https://www.toeic.com.tw/practicetest/" target="_blank">TOEIC 台灣官方練習</a></li>
-</ul>
+<h2>🎧 聽力播放</h2>
+
+<iframe width="100%" height="200"
+src="https://www.youtube.com/embed/vXkXJ57Ip4w"
+title="TOEIC Listening"
+frameborder="0"
+allowfullscreen></iframe>
+
 </div>
 
+<!-- 🧠 QUESTION -->
 <div class="card">
-<h2>🎬 YouTube 免費課程</h2>
-<ul>
-<li><a href="https://www.youtube.com/results?search_query=TOEIC+Listening+Practice" target="_blank">TOEIC Listening Practice</a></li>
-<li><a href="https://www.youtube.com/results?search_query=TOEIC+Part+1+2+3+4" target="_blank">Part 1~4 聽力練習</a></li>
-</ul>
+<h2>Q1</h2>
+<p><b>What will the man most likely do?</b></p>
+
+<div class="option" onclick="check(this,'A')">A. Go to the meeting</div>
+<div class="option" onclick="check(this,'B')">B. Call his manager</div>
+<div class="option" onclick="check(this,'C')">C. Leave the office</div>
+<div class="option" onclick="check(this,'D')">D. Cancel the plan</div>
+
+<div class="answer" id="ans">
+<b>✔ Answer: B</b><br><br>
+<b>Explanation:</b><br>
+The speaker mentions he will "call his manager first", which indicates option B is correct.
 </div>
 
-<div class="card">
-<h2>📝 每日學習建議</h2>
-<ul>
-<li>Part 1：圖片描述（10 分鐘）</li>
-<li>Part 2：應答題（10 分鐘）</li>
-<li>Part 3：對話（15 分鐘）</li>
-<li>Part 4：短講（15 分鐘）</li>
-<li>錯題複習（10 分鐘）</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>📅 30 天計畫</h2>
-
-<input type="checkbox"> Day 1<br>
-<input type="checkbox"> Day 2<br>
-<input type="checkbox"> Day 3<br>
-<input type="checkbox"> Day 4<br>
-<input type="checkbox"> Day 5<br>
-<input type="checkbox"> Day 6<br>
-<input type="checkbox"> Day 7<br>
-<input type="checkbox"> Day 8<br>
-<input type="checkbox"> Day 9<br>
-<input type="checkbox"> Day 10<br>
-<input type="checkbox"> Day 11<br>
-<input type="checkbox"> Day 12<br>
-<input type="checkbox"> Day 13<br>
-<input type="checkbox"> Day 14<br>
-<input type="checkbox"> Day 15<br>
-<input type="checkbox"> Day 16<br>
-<input type="checkbox"> Day 17<br>
-<input type="checkbox"> Day 18<br>
-<input type="checkbox"> Day 19<br>
-<input type="checkbox"> Day 20<br>
-<input type="checkbox"> Day 21<br>
-<input type="checkbox"> Day 22<br>
-<input type="checkbox"> Day 23<br>
-<input type="checkbox"> Day 24<br>
-<input type="checkbox"> Day 25<br>
-<input type="checkbox"> Day 26<br>
-<input type="checkbox"> Day 27<br>
-<input type="checkbox"> Day 28<br>
-<input type="checkbox"> Day 29<br>
-<input type="checkbox"> Day 30<br>
-
+<button onclick="showAnswer()">顯示解答</button>
 </div>
 
 </div>
 
-<footer>
-免費 TOEIC 聽力資源整理｜祝你考試順利！
-</footer>
+<script>
+function showAnswer(){
+  document.getElementById("ans").style.display="block";
+}
+
+function check(el,ans){
+  const correct="B";
+  if(ans===correct){
+    el.style.background="#1f3b2c";
+    el.innerHTML+=" ✔ 正確";
+  }else{
+    el.style.background="#3b1f1f";
+    el.innerHTML+=" ✘ 錯誤";
+  }
+}
+</script>
 
 </body>
 </html>
