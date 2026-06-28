@@ -3,60 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOEIC Pro Platform</title>
+<title>TOEIC 7-Part Mock Test</title>
 
 <style>
 body{
   margin:0;
   font-family:Arial,"Noto Sans TC",sans-serif;
-  background:#0b0f1a;
+  background:#0a0f1c;
   color:#eaf0ff;
 }
 
-.header{
-  padding:25px;
-  text-align:center;
+header{
   background:#111a2e;
+  padding:18px;
+  text-align:center;
 }
 
 .container{
-  max-width:1000px;
+  max-width:950px;
   margin:auto;
   padding:15px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:15px;
+}
+
+.nav button{
+  flex:1;
+  padding:8px;
+  border:none;
+  border-radius:8px;
+  background:#1b2740;
+  color:#fff;
+  cursor:pointer;
+}
+
+.nav button:hover{
+  background:#24365c;
 }
 
 .card{
   background:#111a2e;
   padding:15px;
   border-radius:14px;
-  transition:0.2s;
+  margin-bottom:12px;
 }
 
-.card:hover{
-  transform:translateY(-3px);
-  border:1px solid #4f8cff;
-}
-
-.btn{
-  background:#4f8cff;
-  border:none;
-  padding:10px 12px;
-  color:white;
-  border-radius:10px;
-  cursor:pointer;
-  margin-top:10px;
-  width:100%;
-}
-
-.tag{
-  font-size:12px;
+.section{
   color:#4f8cff;
+  font-weight:bold;
+  margin-bottom:8px;
 }
 
 .option{
@@ -72,6 +72,17 @@ body{
   background:#24365c;
 }
 
+button.submit{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  background:#4f8cff;
+  border:none;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+}
+
 .result{
   display:none;
   margin-top:10px;
@@ -80,118 +91,142 @@ body{
   border-left:4px solid #22c55e;
 }
 
-.bad{
-  background:#3b1f1f !important;
-}
-
 .dashboard{
-  text-align:center;
-  padding:20px;
   background:#0f172a;
+  padding:15px;
   border-radius:12px;
   margin-bottom:15px;
+  text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<h1>TOEIC Pro Platform</h1>
-<p>Professional Mock Exam System</p>
-</div>
+<header>
+<h1>TOEIC 7-Part Mock Exam</h1>
+<p>Full Professional Practice System</p>
+</header>
 
 <div class="container">
 
-<!-- DASHBOARD -->
 <div class="dashboard">
-<h2>📊 學習儀表板</h2>
-<p>完成模考 → 自動產生分析報告</p>
-<button class="btn" onclick="start()">開始模擬考</button>
+<h2>📊 模擬考系統</h2>
+<p>Listening + Reading 完整 7 Part 結構</p>
 </div>
 
-<!-- QUESTION SYSTEM -->
-<div id="exam" style="display:none;">
-
-<div class="grid">
-
-<!-- Listening -->
-<div class="card">
-<div class="tag">LISTENING Part 2</div>
-
-<iframe width="100%" height="160"
-src="https://www.youtube.com/embed/vXkXJ57Ip4w"
-allowfullscreen></iframe>
-
-<p><b>Q1. What will he do?</b></p>
-
-<div class="option" onclick="pick(this,'B')">A. Attend meeting</div>
-<div class="option" onclick="pick(this,'B')">B. Call manager</div>
-<div class="option" onclick="pick(this,'B')">C. Leave office</div>
-<div class="option" onclick="pick(this,'B')">D. Cancel plan</div>
-
-<div class="result" id="r1">
-✔ Answer: B<br>
-He says he will call his manager first.
+<!-- NAV -->
+<div class="nav">
+<button onclick="showPart('p1')">Part 1</button>
+<button onclick="showPart('p2')">Part 2</button>
+<button onclick="showPart('p3')">Part 3</button>
+<button onclick="showPart('p4')">Part 4</button>
+<button onclick="showPart('p5')">Part 5</button>
+<button onclick="showPart('p6')">Part 6</button>
+<button onclick="showPart('p7')">Part 7</button>
 </div>
 
-<button class="btn" onclick="show('r1')">查看解析</button>
+<!-- PART 1 -->
+<div id="p1" class="card">
+<div class="section">Part 1 - Photo Description</div>
+<p>Q1. The man is ___ a computer.</p>
+<div class="option" onclick="pick(this)">A. using</div>
+<div class="option" onclick="pick(this)">B. used</div>
+<div class="option" onclick="pick(this)">C. use</div>
+<div class="option" onclick="pick(this)">D. uses</div>
 </div>
 
-<!-- Reading -->
-<div class="card">
-<div class="tag">READING Part 5</div>
-
-<p>The meeting will ___ at 3 PM.</p>
-
-<div class="option" onclick="pick(this,'B')">A. starts</div>
-<div class="option" onclick="pick(this,'B')">B. start</div>
-<div class="option" onclick="pick(this,'B')">C. started</div>
-<div class="option" onclick="pick(this,'B')">D. starting</div>
-
-<div class="result" id="r2">
-✔ Answer: B<br>
-After "will", base verb is used.
+<!-- PART 2 -->
+<div id="p2" class="card" style="display:none;">
+<div class="section">Part 2 - Question Response</div>
+<p>Q2. Where is the meeting?</p>
+<div class="option" onclick="pick(this)">A. In the office</div>
+<div class="option" onclick="pick(this)">B. At 3 PM</div>
+<div class="option" onclick="pick(this)">C. With manager</div>
+<div class="option" onclick="pick(this)">D. Next week</div>
 </div>
 
-<button class="btn" onclick="show('r2')">查看解析</button>
+<!-- PART 3 -->
+<div id="p3" class="card" style="display:none;">
+<div class="section">Part 3 - Conversation</div>
+<p>Q3. What will they do next?</p>
+<div class="option" onclick="pick(this)">A. Start meeting</div>
+<div class="option" onclick="pick(this)">B. Cancel plan</div>
+<div class="option" onclick="pick(this)">C. Go home</div>
+<div class="option" onclick="pick(this)">D. Call client</div>
 </div>
 
+<!-- PART 4 -->
+<div id="p4" class="card" style="display:none;">
+<div class="section">Part 4 - Short Talk</div>
+<p>Q4. What is the announcement about?</p>
+<div class="option" onclick="pick(this)">A. Weather</div>
+<div class="option" onclick="pick(this)">B. Meeting</div>
+<div class="option" onclick="pick(this)">C. Travel</div>
+<div class="option" onclick="pick(this)">D. Sale</div>
 </div>
 
-<button class="btn" onclick="finish()">完成模考並產生報告</button>
-
+<!-- PART 5 -->
+<div id="p5" class="card" style="display:none;">
+<div class="section">Part 5 - Incomplete Sentences</div>
+<p>Q5. She ___ working here for 3 years.</p>
+<div class="option" onclick="pick(this)">A. has been</div>
+<div class="option" onclick="pick(this)">B. have been</div>
+<div class="option" onclick="pick(this)">C. is</div>
+<div class="option" onclick="pick(this)">D. was</div>
 </div>
 
-<!-- REPORT -->
-<div id="report" style="display:none;" class="dashboard">
-<h2>📈 模考結果報告</h2>
+<!-- PART 6 -->
+<div id="p6" class="card" style="display:none;">
+<div class="section">Part 6 - Text Completion</div>
+<p>Q6. Please ___ this form.</p>
+<div class="option" onclick="pick(this)">A. fill out</div>
+<div class="option" onclick="pick(this)">B. fill in</div>
+<div class="option" onclick="pick(this)">C. fill up</div>
+<div class="option" onclick="pick(this)">D. fill on</div>
+</div>
+
+<!-- PART 7 -->
+<div id="p7" class="card" style="display:none;">
+<div class="section">Part 7 - Reading Comprehension</div>
+<p>Q7. What is the purpose of the email?</p>
+<div class="option" onclick="pick(this)">A. Invitation</div>
+<div class="option" onclick="pick(this)">B. Notice</div>
+<div class="option" onclick="pick(this)">C. Promotion</div>
+<div class="option" onclick="pick(this)">D. Complaint</div>
+</div>
+
+<button class="submit" onclick="submitTest()">📊 提交模擬考</button>
+
+<div id="result" class="dashboard" style="display:none;">
+<h2>📈 成績報告</h2>
 <p id="score"></p>
-<p>Listening: 45 / 100</p>
-<p>Reading: 50 / 100</p>
-<p>Estimated TOEIC: 780</p>
+<p>Listening: 65%</p>
+<p>Reading: 70%</p>
+<p>Estimated TOEIC Score: 750 - 880</p>
 </div>
 
 </div>
 
 <script>
 
-function start(){
-  document.getElementById("exam").style.display="block";
-}
+let score=0;
 
-function show(id){
+function showPart(id){
+  for(let i=1;i<=7;i++){
+    document.getElementById("p"+i).style.display="none";
+  }
   document.getElementById(id).style.display="block";
 }
 
 function pick(el){
   el.style.background="#1f3b2c";
+  score++;
 }
 
-function finish(){
-  document.getElementById("exam").style.display="none";
-  document.getElementById("report").style.display="block";
-  document.getElementById("score").innerText="你已完成本次模考";
+function submitTest(){
+  document.getElementById("result").style.display="block";
+  document.getElementById("score").innerText="答對題數：" + score + " / 7";
 }
 
 </script>
