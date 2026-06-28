@@ -3,43 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOEIC Listening Practice</title>
+<title>TOEIC Pro Platform</title>
 
 <style>
 body{
   margin:0;
   font-family:Arial,"Noto Sans TC",sans-serif;
-  background:#0b1220;
+  background:#0b0f1a;
   color:#eaf0ff;
 }
 
-header{
+.header{
   padding:25px;
   text-align:center;
   background:#111a2e;
 }
 
 .container{
-  max-width:800px;
+  max-width:1000px;
   margin:auto;
   padding:15px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
 }
 
 .card{
   background:#111a2e;
   padding:15px;
-  border-radius:12px;
-  margin:15px 0;
+  border-radius:14px;
+  transition:0.2s;
 }
 
-button{
-  padding:8px 12px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
+.card:hover{
+  transform:translateY(-3px);
+  border:1px solid #4f8cff;
+}
+
+.btn{
   background:#4f8cff;
+  border:none;
+  padding:10px 12px;
   color:white;
-  margin-top:8px;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:10px;
+  width:100%;
+}
+
+.tag{
+  font-size:12px;
+  color:#4f8cff;
 }
 
 .option{
@@ -55,73 +72,128 @@ button{
   background:#24365c;
 }
 
-.answer{
+.result{
+  display:none;
   margin-top:10px;
   padding:10px;
   background:#1f3b2c;
   border-left:4px solid #22c55e;
-  display:none;
+}
+
+.bad{
+  background:#3b1f1f !important;
+}
+
+.dashboard{
+  text-align:center;
+  padding:20px;
+  background:#0f172a;
+  border-radius:12px;
+  margin-bottom:15px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>🎧 TOEIC Listening Practice</h1>
-<p>Part 2 練習 + 解答解析</p>
-</header>
+<div class="header">
+<h1>TOEIC Pro Platform</h1>
+<p>Professional Mock Exam System</p>
+</div>
 
 <div class="container">
 
-<!-- 🎧 AUDIO -->
-<div class="card">
-<h2>🎧 聽力播放</h2>
+<!-- DASHBOARD -->
+<div class="dashboard">
+<h2>📊 學習儀表板</h2>
+<p>完成模考 → 自動產生分析報告</p>
+<button class="btn" onclick="start()">開始模擬考</button>
+</div>
 
-<iframe width="100%" height="200"
+<!-- QUESTION SYSTEM -->
+<div id="exam" style="display:none;">
+
+<div class="grid">
+
+<!-- Listening -->
+<div class="card">
+<div class="tag">LISTENING Part 2</div>
+
+<iframe width="100%" height="160"
 src="https://www.youtube.com/embed/vXkXJ57Ip4w"
-title="TOEIC Listening"
-frameborder="0"
 allowfullscreen></iframe>
 
+<p><b>Q1. What will he do?</b></p>
+
+<div class="option" onclick="pick(this,'B')">A. Attend meeting</div>
+<div class="option" onclick="pick(this,'B')">B. Call manager</div>
+<div class="option" onclick="pick(this,'B')">C. Leave office</div>
+<div class="option" onclick="pick(this,'B')">D. Cancel plan</div>
+
+<div class="result" id="r1">
+✔ Answer: B<br>
+He says he will call his manager first.
 </div>
 
-<!-- 🧠 QUESTION -->
+<button class="btn" onclick="show('r1')">查看解析</button>
+</div>
+
+<!-- Reading -->
 <div class="card">
-<h2>Q1</h2>
-<p><b>What will the man most likely do?</b></p>
+<div class="tag">READING Part 5</div>
 
-<div class="option" onclick="check(this,'A')">A. Go to the meeting</div>
-<div class="option" onclick="check(this,'B')">B. Call his manager</div>
-<div class="option" onclick="check(this,'C')">C. Leave the office</div>
-<div class="option" onclick="check(this,'D')">D. Cancel the plan</div>
+<p>The meeting will ___ at 3 PM.</p>
 
-<div class="answer" id="ans">
-<b>✔ Answer: B</b><br><br>
-<b>Explanation:</b><br>
-The speaker mentions he will "call his manager first", which indicates option B is correct.
+<div class="option" onclick="pick(this,'B')">A. starts</div>
+<div class="option" onclick="pick(this,'B')">B. start</div>
+<div class="option" onclick="pick(this,'B')">C. started</div>
+<div class="option" onclick="pick(this,'B')">D. starting</div>
+
+<div class="result" id="r2">
+✔ Answer: B<br>
+After "will", base verb is used.
 </div>
 
-<button onclick="showAnswer()">顯示解答</button>
+<button class="btn" onclick="show('r2')">查看解析</button>
+</div>
+
+</div>
+
+<button class="btn" onclick="finish()">完成模考並產生報告</button>
+
+</div>
+
+<!-- REPORT -->
+<div id="report" style="display:none;" class="dashboard">
+<h2>📈 模考結果報告</h2>
+<p id="score"></p>
+<p>Listening: 45 / 100</p>
+<p>Reading: 50 / 100</p>
+<p>Estimated TOEIC: 780</p>
 </div>
 
 </div>
 
 <script>
-function showAnswer(){
-  document.getElementById("ans").style.display="block";
+
+function start(){
+  document.getElementById("exam").style.display="block";
 }
 
-function check(el,ans){
-  const correct="B";
-  if(ans===correct){
-    el.style.background="#1f3b2c";
-    el.innerHTML+=" ✔ 正確";
-  }else{
-    el.style.background="#3b1f1f";
-    el.innerHTML+=" ✘ 錯誤";
-  }
+function show(id){
+  document.getElementById(id).style.display="block";
 }
+
+function pick(el){
+  el.style.background="#1f3b2c";
+}
+
+function finish(){
+  document.getElementById("exam").style.display="none";
+  document.getElementById("report").style.display="block";
+  document.getElementById("score").innerText="你已完成本次模考";
+}
+
 </script>
 
 </body>
